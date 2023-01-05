@@ -2,7 +2,7 @@ package wiwiel.training.sfgdi.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import wiwiel.training.sfgdi.services.GreetingServiceImpl;
+import wiwiel.training.sfgdi.services.ConstructorInjectedGreetingService;
 
 class SetterInjectedControllerTest {
 
@@ -11,7 +11,7 @@ class SetterInjectedControllerTest {
     @BeforeEach
     void setUp() {
         controller = new SetterInjectedController();
-        controller.setGreetingService(new GreetingServiceImpl());
+        controller.setGreetingService(new ConstructorInjectedGreetingService());
     }
 
     @Test
