@@ -2,14 +2,12 @@ package wiwiel.training.sfgdi.config;
 
 import com.training.pets.PetService;
 import com.training.pets.PetServiceFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 import wiwiel.training.sfgdi.repositories.EnglishGreetingRepository;
 import wiwiel.training.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import wiwiel.training.sfgdi.services.*;
 
+@ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 
@@ -30,10 +28,10 @@ public class GreetingServiceConfig {
         return petServiceFactory.getPetService("cat");
     }
 
-    @Bean
-    ConstructorInjectedGreetingService constructorInjectedGreetingService(){
-        return new ConstructorInjectedGreetingService();
-    }
+    //@Bean
+    //ConstructorInjectedGreetingService constructorInjectedGreetingService(){
+    //    return new ConstructorInjectedGreetingService();
+    //}
 
     @Bean
     PropertyInjectedGreetingService propertyInjectedGreetingService(){
