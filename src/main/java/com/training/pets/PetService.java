@@ -1,4 +1,4 @@
-package wiwiel.training.sfgdi.services;
+package com.training.pets;
 
 /**
  * Created by jt on 12/28/19.

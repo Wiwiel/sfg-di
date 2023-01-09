@@ -1,11 +1,13 @@
 package wiwiel.training.sfgdi;
 
+import org.springframework.context.annotation.ComponentScan;
 import wiwiel.training.sfgdi.controllers.PetController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import wiwiel.training.sfgdi.controllers.*;
 
+@ComponentScan(basePackages = {"wiwiel.training.sfgdi","com.training.pets"})
 @SpringBootApplication
 public class SfgDiApplication {
 	public static void main(String[] args) {

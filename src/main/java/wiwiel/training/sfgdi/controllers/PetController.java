@@ -1,7 +1,7 @@
 package wiwiel.training.sfgdi.controllers;
 
 import org.springframework.stereotype.Controller;
-import wiwiel.training.sfgdi.services.PetService;
+import com.training.pets.PetService;
 
 /**
  * Created by jt on 12/28/19.
