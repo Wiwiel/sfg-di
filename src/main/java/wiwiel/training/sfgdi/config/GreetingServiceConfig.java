@@ -2,7 +2,6 @@ package wiwiel.training.sfgdi.config;
 
 import com.training.pets.PetService;
 import com.training.pets.PetServiceFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import wiwiel.training.sfgdi.datasource.FakeDataSource;
 import wiwiel.training.sfgdi.repositories.EnglishGreetingRepository;
@@ -14,13 +13,11 @@ import wiwiel.training.sfgdi.services.*;
 public class GreetingServiceConfig {
 
     @Bean
-    FakeDataSource fakeDataSource(@Value("${wiwiel.username}") String username,
-                                  @Value("${wiwiel.password}") String password,
-                                  @Value("${wiwiel.jdbcurl}") String jdbcurl){
+    FakeDataSource fakeDataSource(SfgConfiguration sfgConfiguration){
         FakeDataSource fakeDataSource =new FakeDataSource();
-        fakeDataSource.setUsername(username);
-        fakeDataSource.setPassword(password);
-        fakeDataSource.setJdbcurl(jdbcurl);
+        fakeDataSource.setUsername(sfgConfiguration.getUsername());
+        fakeDataSource.setPassword(sfgConfiguration.getPassword());
+        fakeDataSource.setJdbcurl(sfgConfiguration.getJdbcurl());
         return fakeDataSource;
     }
 
