@@ -1,7 +1,20 @@
 spring:
   profiles:
-    active: EN, cat, qa
+    active:
+      -  EN
+      -  cat
+      -  prod
 wiwiel:
   username: YmlUserName
   password: YmlPassword
   jdbcurl: YmlUrl
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+wiwiel:
+  username: ProdYmlUserName
+  password: ProdYmlPassword
+  jdbcurl: ProdYmlUrl
