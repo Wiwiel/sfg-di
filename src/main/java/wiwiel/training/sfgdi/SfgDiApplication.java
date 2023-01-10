@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import wiwiel.training.sfgdi.controllers.*;
+import wiwiel.training.sfgdi.datasource.FakeDataSource;
 import wiwiel.training.sfgdi.services.PrototypeBean;
 import wiwiel.training.sfgdi.services.SingletonBean;
 
@@ -40,15 +41,19 @@ public class SfgDiApplication {
 		System.out.println(constructorInjectedController.getGreeting());
 
 		System.out.println("-------Bean Scopes-------");
-		SingletonBean singletonBean1 = (SingletonBean) ctx.getBean(SingletonBean.class);
+		SingletonBean singletonBean1 = ctx.getBean(SingletonBean.class);
 		System.out.println(singletonBean1.getMyScope());
-		SingletonBean singletonBean2 = (SingletonBean) ctx.getBean(SingletonBean.class);
+		SingletonBean singletonBean2 = ctx.getBean(SingletonBean.class);
 		System.out.println(singletonBean2.getMyScope());
 
-		PrototypeBean prototypeBean1 = (PrototypeBean) ctx.getBean(PrototypeBean.class);
+		PrototypeBean prototypeBean1 = ctx.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean1.getMyScope());
-		PrototypeBean prototypeBean2 = (PrototypeBean) ctx.getBean(PrototypeBean.class);
+		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean2.getMyScope());
 
+		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource.getUsername());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getJdbcurl());
 	}
 }

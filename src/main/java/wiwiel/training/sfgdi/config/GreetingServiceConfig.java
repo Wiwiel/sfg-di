@@ -2,14 +2,28 @@ package wiwiel.training.sfgdi.config;
 
 import com.training.pets.PetService;
 import com.training.pets.PetServiceFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
+import wiwiel.training.sfgdi.datasource.FakeDataSource;
 import wiwiel.training.sfgdi.repositories.EnglishGreetingRepository;
 import wiwiel.training.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import wiwiel.training.sfgdi.services.*;
 
+@PropertySource("classpath:datasource.properties")
 @ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
+
+    @Bean
+    FakeDataSource fakeDataSource(@Value("${wiwiel.username}") String username,
+                                  @Value("${wiwiel.password}") String password,
+                                  @Value("${wiwiel.jdbcurl}") String jdbcurl){
+        FakeDataSource fakeDataSource =new FakeDataSource();
+        fakeDataSource.setUsername(username);
+        fakeDataSource.setPassword(password);
+        fakeDataSource.setJdbcurl(jdbcurl);
+        return fakeDataSource;
+    }
 
     @Bean
     PetServiceFactory petServiceFactory(){
@@ -27,11 +41,6 @@ public class GreetingServiceConfig {
     PetService catPetService(PetServiceFactory petServiceFactory){
         return petServiceFactory.getPetService("cat");
     }
-
-    //@Bean
-    //ConstructorInjectedGreetingService constructorInjectedGreetingService(){
-    //    return new ConstructorInjectedGreetingService();
-    //}
 
     @Bean
     PropertyInjectedGreetingService propertyInjectedGreetingService(){
