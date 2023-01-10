@@ -9,7 +9,6 @@ import wiwiel.training.sfgdi.repositories.EnglishGreetingRepository;
 import wiwiel.training.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import wiwiel.training.sfgdi.services.*;
 
-@PropertySource("classpath:datasource.properties")
 @ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
